@@ -16,14 +16,15 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                sh '''
-                    mkdir -p ${WORKSPACE}/python-app-deploy
-                    cp ${WORKSPACE}/app.py ${WORKSPACE}/python-app-deploy/
-                '''
-            }
-        }
+    steps {
+        echo 'Deploying application...'
+        sh '''
+            mkdir -p ${WORKSPACE}/python-app-deploy
+            cp ${WORKSPACE}/python-flask-app/app.py \
+               ${WORKSPACE}/python-app-deploy/
+        '''
+    }
+   }
 
         stage('Run Application') {
             steps {
